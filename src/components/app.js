@@ -1,14 +1,14 @@
-import React from 'react';
-import '../assets/css/app.css';
-import logo from '../assets/images/logo.svg';
+import "materialize-css/dist/css/materialize.min.css";
+import React from "react";
+import List from "./list";
 
 const App = () => (
-    <div>
-        <div className="app">
-            <img src={logo} className="logo rotate"/>
-            <h1>Welcome to React</h1>
-        </div>
-    </div>
+	<div>
+		<div className="container">
+			<h1 className="center">To Do List</h1>
+			<List />
+		</div>
+	</div>
 );
 
 export default App;
