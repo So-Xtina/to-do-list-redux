@@ -16,7 +16,7 @@ class List extends Component {
 		const listItems = listData.map((item, index) => {
 			return (
 				<li className="collection-item" key={item._id}>
-					{item.title}
+					<Link to={`/item/${item._id}`}>{item.title}</Link>
 				</li>
 			);
 		});
