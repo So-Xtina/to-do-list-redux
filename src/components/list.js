@@ -11,6 +11,10 @@ class List extends Component {
 	render() {
 		const { listData } = this.props;
 
+		if (!listData.length) {
+			return <h1>Loading...</h1>;
+		}
+
 		console.log("LISTDATA:", listData);
 
 		const listItems = listData.map((item, index) => {
