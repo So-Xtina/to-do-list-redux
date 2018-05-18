@@ -10,6 +10,7 @@ export default (state = DEFAULT_STATE, action) => {
 		case types.GET_LIST_DATA:
 			return { ...state, all: action.payload.data.todos };
 		case types.GET_SINGLE_ITEM:
+		case types.TOGGLE_COMPLETE:
 			return { ...state, single: action.payload.data.todo };
 		default:
 			return state;
