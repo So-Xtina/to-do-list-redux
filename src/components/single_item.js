@@ -1,17 +1,21 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { getSingleItem } from "../actions";
+import { getSingleItem, toggleItemComplete } from "../actions";
 
 class SingleItem extends Component {
 	componentDidMount() {
 		this.props.getSingleItem(this.props.match.params.id);
 	}
 
+	handleToggleComplete() {
+		this.props.toggleItemComplete(this.props.match.params.id);
+	}
+
 	render() {
 		console.log("Single Props:", this.props);
 
-		const { title, details } = this.props.item;
+		const { title, details, complete } = this.props.item;
 
 		return (
 			<div>
@@ -23,6 +27,10 @@ class SingleItem extends Component {
 				</div>
 				<h4>{title}</h4>
 				<p>{details}</p>
+				<p>Item is {complete ? "completed" : "incomplete"}</p>
+				<button className={`btn ${complete ? "teal" : "red"}`} onClick={this.handleToggleComplete.bind(this)}>
+					{complete ? "Make Incomplete" : "Complete Item"}
+				</button>
 			</div>
 		);
 	}
@@ -34,7 +42,7 @@ function mapStateToProps(state) {
 	};
 }
 
-export default connect(mapStateToProps, { getSingleItem })(SingleItem);
+export default connect(mapStateToProps, { getSingleItem, toggleItemComplete })(SingleItem);
 
 //display all available info under the item except the userId to the user in hte single item page;
 //example const time = new Date (timestamp#);
