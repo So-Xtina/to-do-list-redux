@@ -12,6 +12,11 @@ export default (state = DEFAULT_STATE, action) => {
 		case types.GET_SINGLE_ITEM:
 		case types.TOGGLE_COMPLETE:
 			return { ...state, single: action.payload.data.todo };
+		case types.CLEAR_SINGLE_ITEM:
+			return {
+				...state,
+				single: {}
+			};
 		default:
 			return state;
 	}
